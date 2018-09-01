@@ -17,7 +17,7 @@ namespace mServer
             Id = Guid.NewGuid().ToString();
             this.tcpClient = tcpClient;
             this.server = server;
-            server.AddConnection(this);a
+            server.AddConnection(this);
         }
 
         public void Process()
