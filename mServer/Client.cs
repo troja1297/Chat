@@ -14,7 +14,7 @@ namespace mServer
 
         public Client(TcpClient tcpClient, Server server)
         {
-            Id = Guid.NewGuid().ToString();
+            Id = Guid.NewGuid().ToString();в
             this.tcpClient = tcpClient;
             this.server = server;
             server.AddConnection(this);
