@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
@@ -10,7 +11,8 @@ namespace Client
     {
         Server = 1,
         User = 2,
-        Notification = 3
+        Notification = 3,
+        ClientsCount = 4
     }
     
     internal class Program
@@ -144,6 +146,25 @@ namespace Client
                         Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine(msg.Message);
                         Console.ForegroundColor = ConsoleColor.White;
+                    } else if (message.Contains(MessageType.ClientsCount.ToString()))
+                    {
+                        var msg = JsonConvert.DeserializeAnonymousType(message, new { Message = "", Type = "" });
+                        Console.ForegroundColor = ConsoleColor.Blue;
+                        if (msg.Message.Length == 0)
+                        {
+                            Console.WriteLine($"В чате сейчас 0 людей");
+                        }
+                        else
+                        {
+                            string[] words = msg.Message.Split(' ');
+                            Console.WriteLine($"В чате сейчас {words.Length} людей");
+                            foreach (string s in words)
+                            {
+                                Console.WriteLine(s + ",\n");    
+                            }
+                            
+                        }
+                        Console.ForegroundColor = ConsoleColor.White;
                     }
                     else
                     {
@@ -151,9 +172,9 @@ namespace Client
                         Console.WriteLine($"                {msg.Message.Replace(" : ", $"{DateTime.Now.Hour}:{DateTime.Now.Minute}: ")}");
                     }
                 }
-                catch
+                catch (Exception e)
                 {
-                    Console.WriteLine("Подключение прервано!"); //соединение было прервано
+                    Console.WriteLine("Подключение прервано!" + e.Message); //соединение было прервано
                     Console.ReadLine();
                     Disconnect();
                 }

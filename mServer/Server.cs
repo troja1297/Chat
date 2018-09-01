@@ -13,7 +13,8 @@ namespace mServer
     {
         Server = 1,
         User = 2,
-        Notification = 3
+        Notification = 3,
+        ClientsCount = 4
     }
     
     public class Server
@@ -57,6 +58,31 @@ namespace mServer
             }
         }
 
+        public void SendListOfClients(string id)
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (Client client in clients)
+            {
+                if (client.Id != id)
+                {
+                    sb.Append($"{client} ");
+                }
+            }
+            string jsonStr = JsonConvert.SerializeObject(new { Message = sb.ToString(), Type = MessageType.ClientsCount.ToString() });
+            SendOneRecepientMessage(jsonStr, id);
+        }
+
+        protected internal void SendOneRecepientMessage(string message, string id)
+        {
+            byte[] data = Encoding.Unicode.GetBytes(message);
+            for (int i = 0; i < clients.Count; i++)
+            {
+                if (clients[i].Id == id) 
+                {
+                    clients[i].Stream.Write(data, 0, data.Length); 
+                }
+            }
+        }
         
         protected internal void BroadcastMessage(string message, string id, string type)
         {

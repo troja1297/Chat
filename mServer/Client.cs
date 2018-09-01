@@ -32,6 +32,7 @@ namespace mServer
                 message = userName + " вошел в чат";
                 // посылаем сообщение о входе в чат всем подключенным пользователям
                 server.BroadcastMessage(message, this.Id, MessageType.Server.ToString());
+                server.SendListOfClients(this.Id);
                 Console.WriteLine(message);
                 // в цикле получаем сообщения от клиента
                 while (true)
