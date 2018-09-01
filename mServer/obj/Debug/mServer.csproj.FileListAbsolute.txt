@@ -1,0 +1,9 @@
+C:\Users\Vladislav Andreev\RiderProjects\mServer\mServer\bin\Debug\mServer.exe
+C:\Users\Vladislav Andreev\RiderProjects\mServer\mServer\bin\Debug\mServer.pdb
+C:\Users\Vladislav Andreev\RiderProjects\mServer\mServer\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Vladislav Andreev\RiderProjects\mServer\mServer\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Vladislav Andreev\RiderProjects\mServer\mServer\obj\Debug\mServer.csprojAssemblyReference.cache
+C:\Users\Vladislav Andreev\RiderProjects\mServer\mServer\obj\Debug\mServer.csproj.CoreCompileInputs.cache
+C:\Users\Vladislav Andreev\RiderProjects\mServer\mServer\obj\Debug\mServer.csproj.CopyComplete
+C:\Users\Vladislav Andreev\RiderProjects\mServer\mServer\obj\Debug\mServer.exe
+C:\Users\Vladislav Andreev\RiderProjects\mServer\mServer\obj\Debug\mServer.pdb
