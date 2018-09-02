@@ -12,7 +12,8 @@ namespace Client
         Server = 1,
         User = 2,
         Notification = 3,
-        ClientsCount = 4
+        ClientsCount = 4,
+        ManyUsers = 5
     }
     
     internal class Program
@@ -96,7 +97,7 @@ namespace Client
                 // запускаем новый поток для получения данных
                 Thread receiveThread = new Thread(ReceiveMessage);
                 receiveThread.Start(); //старт потока
-                Console.WriteLine("Добро пожаловать, {0}", userName);
+                Console.WriteLine("Добро пожаловать");
                 SendMessage();
             }
             catch (Exception ex)
@@ -122,6 +123,21 @@ namespace Client
                 stream.Write(data, 0, data.Length);
             }
         }
+
+        static void OneUserMessage()
+        {
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            Console.WriteLine("Введите через запятую получателей(если пусто то отправится всем)");
+            Console.ForegroundColor = ConsoleColor.White;
+
+            Console.WriteLine("Введите сообщение: ");
+            while (true)
+            {
+
+            }
+        }
+
+
         // получение сообщений
         static void ReceiveMessage()
         {
@@ -160,7 +176,7 @@ namespace Client
                             Console.WriteLine($"В чате сейчас {words.Length} людей");
                             foreach (string s in words)
                             {
-                                Console.WriteLine(s + ",\n");    
+                                Console.WriteLine(s);
                             }
                             
                         }

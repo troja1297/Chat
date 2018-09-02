@@ -65,7 +65,7 @@ namespace mServer
             {
                 if (client.Id != id)
                 {
-                    sb.Append($"{client} ");
+                    sb.Append($"{client.userName} ");
                 }
             }
             string jsonStr = JsonConvert.SerializeObject(new { Message = sb.ToString(), Type = MessageType.ClientsCount.ToString() });

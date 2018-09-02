@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\Vladislav Andreev\.Rider2018.1\system\resharper-host\local\Transient\ReSharperHost\v12\SolutionCaches\_mServer.611755386.00" t="ExcludeRecursive" />
-    <e p="C:\Users\Vladislav Andreev\RiderProjects\mServer" t="IncludeFlat">
+    <e p="C:\Users\tuchk\.Rider2018.1\system\resharper-host\local\Transient\ReSharperHost\v12\SolutionCaches\_mServer.1428619168.00" t="ExcludeRecursive" />
+    <e p="D:\C#\44_less\Chat" t="IncludeFlat">
       <e p="Client" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
         <e p="Client.csproj" t="IncludeRecursive" />

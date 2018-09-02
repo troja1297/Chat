@@ -7,3 +7,12 @@ C:\Users\Vladislav Andreev\RiderProjects\mServer\mServer\obj\Debug\mServer.cspro
 C:\Users\Vladislav Andreev\RiderProjects\mServer\mServer\obj\Debug\mServer.csproj.CopyComplete
 C:\Users\Vladislav Andreev\RiderProjects\mServer\mServer\obj\Debug\mServer.exe
 C:\Users\Vladislav Andreev\RiderProjects\mServer\mServer\obj\Debug\mServer.pdb
+D:\C#\44_less\Chat\mServer\bin\Debug\mServer.exe
+D:\C#\44_less\Chat\mServer\bin\Debug\mServer.pdb
+D:\C#\44_less\Chat\mServer\bin\Debug\Newtonsoft.Json.dll
+D:\C#\44_less\Chat\mServer\bin\Debug\Newtonsoft.Json.xml
+D:\C#\44_less\Chat\mServer\obj\Debug\mServer.csprojAssemblyReference.cache
+D:\C#\44_less\Chat\mServer\obj\Debug\mServer.csproj.CoreCompileInputs.cache
+D:\C#\44_less\Chat\mServer\obj\Debug\mServer.csproj.CopyComplete
+D:\C#\44_less\Chat\mServer\obj\Debug\mServer.exe
+D:\C#\44_less\Chat\mServer\obj\Debug\mServer.pdb
