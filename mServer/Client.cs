@@ -42,7 +42,7 @@ namespace mServer
                         message = GetMessage();
                         message = String.Format("{0}: {1}", userName, message);
                         Console.WriteLine(message);
-                        server.BroadcastMessage(message, this.Id, MessageType.User.ToString());
+                        server.SendSoloMessage(message, this.Id);
                     }
                     catch
                     {

@@ -14,7 +14,8 @@ namespace mServer
         Server = 1,
         User = 2,
         Notification = 3,
-        ClientsCount = 4
+        ClientsCount = 4,
+        ManyUsers = 5
     }
     
     public class Server
@@ -96,7 +97,56 @@ namespace mServer
                 }
             }
         }
-        
+
+        public void SendSoloMessage(string message, string id)
+        {
+            var msg = JsonConvert.DeserializeAnonymousType(message, new { Clients = "", Message = "", Type = "" });
+            if (msg.Type == MessageType.ManyUsers.ToString())
+            {
+                List<string> clientList = new List<string>(msg.Clients.Split(' '));
+                for (int i = 0; i < clientList.Count; i++)
+                {
+                    string nameGetting = clientList[i];
+                    for (int b = 0; b < clients.Count; b++)
+                    {
+                        string realName = clients[b].userName;
+                        SendOneRecepientMessage(message, clients[b].Id);
+                        if (nameGetting == realName)
+                        {
+                            clientList.RemoveAt(i);
+
+                        }
+                    }
+                }
+
+                if (clientList.Count != 0)
+                {
+                    StringBuilder sb = new StringBuilder();
+                    sb.Append("Отсутствуют: ");
+                    foreach (string s in clientList)
+                    {
+                        sb.Append(s);
+                    }
+
+                    string msgm =
+                        JsonConvert.SerializeObject(new {Message = sb.ToString(), Type = MessageType.ClientsCount});
+
+                    byte[] data = Encoding.Unicode.GetBytes(msgm);
+                    for (int i = 0; i < clients.Count; i++)
+                    {
+                        if (clients[i].Id != id) // если id клиента не равно id отправляющего
+                        {
+                            clients[i].Stream.Write(data, 0, data.Length); //передача данных
+                        }
+                    }
+                    SendOneRecepientMessage(message, id);
+                }
+                else
+                {
+                    BroadcastMessage(message, id, MessageType.User.ToString());
+                }
+            }
+        }
         protected internal void Disconnect()
         {
             tcpListener.Stop(); //остановка сервера

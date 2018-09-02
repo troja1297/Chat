@@ -72,7 +72,7 @@ namespace Client
             catch (SocketException e)
             {
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("Не удалось подключиться! Данные введены неправильно");
+                Console.WriteLine("Не удалось подключиться! Данные введены неправильно" + e);
                 Console.ForegroundColor = ConsoleColor.White;
                 return false;
             }
@@ -98,7 +98,7 @@ namespace Client
                 Thread receiveThread = new Thread(ReceiveMessage);
                 receiveThread.Start(); //старт потока
                 Console.WriteLine("Добро пожаловать");
-                SendMessage();
+                OneUserNameMessage();
             }
             catch (Exception ex)
             {
@@ -124,15 +124,16 @@ namespace Client
             }
         }
 
-        static void OneUserMessage()
+        static void OneUserNameMessage()
         {
-            Console.ForegroundColor = ConsoleColor.DarkRed;
-            Console.WriteLine("Введите через запятую получателей(если пусто то отправится всем)");
-            Console.ForegroundColor = ConsoleColor.White;
-
-            Console.WriteLine("Введите сообщение: ");
+            Console.WriteLine("Введите через пробел получателей(если пусто то отправится всем)");
             while (true)
             {
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                string clients = Console.ReadLine();
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("Введите сообщение: ");
+                string message = JsonConvert.SerializeObject(new {Clients = clients, Message = Console.ReadLine(), Type = MessageType.ManyUsers.ToString()});
 
             }
         }
@@ -145,7 +146,7 @@ namespace Client
             {
                 try
                 {
-                    byte[] data = new byte[64]; // буфер для получаемых данных
+                    byte[] data = new byte[128]; // буфер для получаемых данных
                     StringBuilder builder = new StringBuilder();
                     int bytes = 0;
                     do
@@ -190,7 +191,7 @@ namespace Client
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine("Подключение прервано!" + e.Message); //соединение было прервано
+                    Console.WriteLine("Подключение прервано!" + e); //соединение было прервано
                     Console.ReadLine();
                     Disconnect();
                 }
