@@ -132,7 +132,7 @@ namespace mServer
                         JsonConvert.SerializeObject(new {Message = sb.ToString(), Type = MessageType.ClientsCount});
 
                     byte[] data = Encoding.Unicode.GetBytes(msgm);
-                    for (int i = 0; i < clients.Count; i++)
+                    for (int i = 0; i < clients.Count; i++)jjjjjjjjjjjjjjjjj
                     {
                         if (clients[i].Id != id) // если id клиента не равно id отправляющего
                         {
